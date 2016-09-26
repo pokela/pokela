@@ -1,0 +1,22 @@
+<link rel="stylesheet" href="css/catalogo.css">
+<div class="contenido">
+    <div class="page-header">
+    <h4>Novedades</h4>
+    </div>
+
+    <div class="row>
+        <div class="row__inner">
+
+            <div class="tile" ng-repeat="libro in catalogo" ng-click="verDetalle($event, libro)">
+            <div class="tile__media">
+                <img class="tile__img" src="{{ libro.portada }}"" alt="{{ libro.titulo }}" />
+            </div>
+            <div class="tile__details">
+                <div class="tile__title">
+                {{ libro.titulo }}
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>

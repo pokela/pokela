@@ -1,0 +1,86 @@
+<div class="contenido">
+    <h1>{{ conf.titulo }} libro</h1>
+    <div class="row">
+        <div class="col-md-10">
+            <div class="row">
+                <div class="col-md-6">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Título</label>
+                        <input ng-model="libro.titulo">
+                    </md-input-container>
+                </div>
+                <div class="col-md-6">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Subtítulo</label>
+                        <input ng-model="libro.subtitulo">
+                    </md-input-container>
+                </div>
+                <div class="col-md-12">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Descripción</label>
+                        <input ng-model="libro.descripcion">
+                    </md-input-container>
+                </div>
+                <div class="col-md-8">
+                    <md-chips ng-model="libro.categorias" placeholder="Categorías" readonly="true" md-removable="true">
+                        <md-chip-template>
+                        <strong>{{$chip.descripcion}}</strong>
+                        </md-chip-template>
+                    </md-chips>
+                </div>
+                <div class="col-md-4">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Categorías disponibles</label>
+                        <md-select ng-model="obj.categoriaModel">
+                            <md-option><em>Seleccione</em></md-option>
+                            <md-option ng-repeat="categoria in obj.categorias" ng-click="seleccionarCategoria(categoria)">
+                            {{categoria.descripcion}}
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+                <div class="col-md-12">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>URL Portada</label>
+                        <input ng-model="libro.portada">
+                    </md-input-container>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <img style="width: 180px" src="{{ libro.portada }}">
+        </div>
+    </div>
+    <md-button ng-click="guardar()" class="md-raised md-primary">Guardar</md-button>
+    <md-button ng-click="eliminar()" ng-show="libro._id != ''" class="md-raised md-warn">Eliminar</md-button>
+    <h2>Capítulos</h2>
+    <div class="row">
+        <div class="col-md-4" ng-repeat="capitulo in libro.capitulos">
+            <md-card md-theme-watch>
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">{{ capitulo.titulo }}</span>
+                        <span class="md-subhead">{{ capitulo.subtitulo }}</span>
+                    </md-card-title-text>
+                    <md-card-title-media>
+                        <div class="md-media-lg card-media"></div>
+                    </md-card-title-media>
+                </md-card-title>
+                <md-card-actions layout="row" layout-align="end center">
+                    <md-button ng-click="editarCapitulo($event, capitulo)">Editar</md-button>
+                    <md-button ng-show="libro._id != ''" ng-click="escribir(capitulo._id)">Escribir</md-button>
+                </md-card-actions>
+            </md-card>
+        </div>
+        <div class="col-md-4 text-center" style="height: 250px; padding: 0px 15px 15px 15px">
+            <md-card ng-click="nuevoCapitulo($event, libro)" md-theme-watch style="height: 100%; padding-top: 60px; color: grey">
+                <div class="col-md-12">
+                    <i class="fa fa-plus-circle fa-5x" aria-hidden="true"></i>
+                </div>
+                <div class="col-md-12">
+                    <h3>Añadir capítulo</h3>
+                </div>
+            </md-card>
+        </div>
+    </div>
+</div>

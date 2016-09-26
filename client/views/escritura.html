@@ -1,0 +1,20 @@
+<div class="contenido">
+    <h1 ng-if="libro">{{ libro.titulo }}</h1>
+    <h2 ng-if="capitulo">{{ capitulo.titulo }}</h2>
+    <div class="row">
+        <div class="col-md-2">
+            <md-button ng-show="indexCapitulo > 0" ng-click="anterior()"> <i class="fa fa-arrow-left" aria-hidden="true"></i> Anterior</md-button>
+        </div>
+        <div class="col-md-2 col-md-offset-8 text-right">
+            <md-button ng-show="indexCapitulo < libro.capitulos.length-1" ng-click="siguiente()">Siguiente <i class="fa fa-arrow-right" aria-hidden="true"></i></md-button>
+        </div>
+        <div class="col-md-12">
+            <textarea ui-tinymce="tinymceOptions" ng-model="tinymceModel" style="height:300px"></textarea><br/>
+        </div>
+        <div class="col-md-12">
+            <md-button class="md-raised md-primary" ng-click="guardarLibro(libro)">Guardar</md-button>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,5 @@
+- Crear configuración de depuración Node.js en VS Code
+- Ejecutar Ver/Terminal Integrado en VS Code
+- Ejecutar mongod en el Terminal Integrado
+- Iniciar la depuración en modo 'Iniciar'
+- Esto ejecutará el servidor express en modo depuración.

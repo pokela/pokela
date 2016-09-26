@@ -1,0 +1,26 @@
+¡Importante! Ejecutar parte server antes de iniciar la parte cliente.
+
+- Crear configuración de depuración Chrome Extension en VS Code:
+
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Attach to Chrome, with sourcemaps",
+            "type": "chrome",
+            "request": "attach",
+            "port": 9222,
+            "sourceMaps": true,
+            "webRoot": "${workspaceRoot}"
+        }
+    ]
+}
+
+- Ejecutar Ver/Terminal Integrado en VS Code
+- Abrir chrome en modo debug a través del siguiente comando en el terminal integrado:
+
+    /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --remote-debugging-port=9222
+
+- Ejecutar npm start en el Terminal Integrado
+- Iniciar la depuración en modo 'Attach to chrome...'
+- Esto asociará chrome a VS COde para depurar

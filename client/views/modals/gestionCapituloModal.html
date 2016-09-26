@@ -1,0 +1,100 @@
+<md-dialog>
+  <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2 ng-show="nuevo">Nuevo capítulo</h2>
+        <h2 ng-show="!nuevo">Editar capítulo</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <i class="fa fa-times" style="font-size:18px" aria-hidden="true"></i>
+        </md-button>
+      </div>
+    </md-toolbar>
+  <md-dialog-content>
+    <div class="md-dialog-content" style="overflow: hidden">
+        <div class="row">
+          <div class="col-md-9">
+              <div class="row">
+                  <div class="col-md-6">
+                      <md-input-container class="md-block" flex-gt-sm>
+                          <label>Título</label>
+                          <input ng-model="capitulo.titulo">
+                      </md-input-container>
+                  </div>
+                  <div class="col-md-6">
+                      <md-input-container class="md-block" flex-gt-sm>
+                          <label>Subtítulo</label>
+                          <input ng-model="capitulo.subtitulo">
+                      </md-input-container>
+                  </div>
+                  <div class="col-md-12">
+                      <md-input-container class="md-block" flex-gt-sm>
+                          <label>Descripción</label>
+                          <input ng-model="capitulo.descripcion">
+                      </md-input-container>
+                  </div>
+                  <div class="col-md-8">
+                    <md-chips ng-model="capitulo._categorias" placeholder="Categorías" readonly="true" md-removable="true">
+                        <md-chip-template>
+                        <strong>{{$chip.descripcion}}</strong>
+                        </md-chip-template>
+                    </md-chips>
+                </div>
+                <div class="col-md-4">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Categorías disponibles</label>
+                        <md-select ng-model="obj.categoriaModel">
+                            <md-option><em>Seleccione</em></md-option>
+                            <md-option ng-repeat="categoria in categorias" ng-click="seleccionarCategoria(categoria)">
+                            {{categoria.descripcion}}
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+              </div>
+          </div>
+      </div>
+      <h2>Subcapítulos</h2>
+        <div class="row">
+            <div class="col-md-4" ng-repeat="subcapitulo in capitulo.capitulos">
+                <md-card md-theme-watch>
+                    <md-card-title>
+                        <md-card-title-text>
+                            <span class="md-headline">{{ subcapitulo.titulo }}</span>
+                            <span class="md-subhead">{{ subcapitulo.subtitulo }}</span>
+                        </md-card-title-text>
+                        <md-card-title-media>
+                            <div class="md-media-lg card-media"></div>
+                        </md-card-title-media>
+                    </md-card-title>
+                    <md-card-actions layout="row" layout-align="end center">
+                        <md-button ng-click="editarSubcapitulo($event, subcapitulo)">Editar</md-button>
+                        <md-button ng-show="capitulo._id != ''" ng-click="escribir(subcapitulo._id)">Escribir</md-button>
+                    </md-card-actions>
+                </md-card>
+            </div>
+            <div class="col-md-4 text-center" style="height: 250px; padding: 0px 15px 15px 15px">
+                <md-card ng-click="nuevoSubcapitulo($event, capitulo)" md-theme-watch style="height: 100%; padding-top: 60px; color: grey">
+                    <div class="col-md-12">
+                        <i class="fa fa-plus-circle fa-5x" aria-hidden="true"></i>
+                    </div>
+                    <div class="col-md-12">
+                        <h3>Añadir subcapítulo</h3>
+                    </div>
+                </md-card>
+            </div>
+        </div>
+    </div>
+  </md-dialog-content>
+  <md-dialog-actions layout="row">
+      <md-button ng-click="cancel()" >
+        Cancelar
+      </md-button>
+      <md-button ng-click="guardar('eliminar')" class="md-raised md-warn">Eliminar</md-button>
+      <md-button ng-click="guardar('guardar')"  class="md-raised md-primary" md-autofocus>
+       Aceptar
+      </md-button>
+      <!--<md-button ng-show="!nuevo" ng-click="guardar('guardarYEscribir')">
+        Guardar y escribir
+      </md-button>-->
+    </md-dialog-actions>
+</md-dialog>

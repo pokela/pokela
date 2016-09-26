@@ -1,0 +1,4 @@
+Para poder depurar en VS Code es necesario abrir cada instancia (server/cliente) por separado.
+Es decir, si queremos depurar la parte cliente, tendremos que seleccionar como carpeta raiz en VS Code la carpeta Client 
+Lo mismo para la parte Server
+Para configurar VS COde para cada parte (cliente/servidor) ver el fichero de configuración debug.info de cada carpeta.

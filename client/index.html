@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html ng-app="app" lang="es" >
+<head>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+
+  <!-- Libraries Styles -->
+  <link rel="stylesheet" href="node_modules/angular-material/angular-material.min.css">
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.css">
+
+  <!-- Custom Styles-->
+  <link rel="stylesheet" href="css/custom.css">
+  <link rel="stylesheet" href="css/login.css">
+  
+  <link rel="stylesheet" href="css/lectura.css">
+  <link rel="stylesheet" href="css/test.css">
+  
+</head>
+
+<body ng-controller="homeCtrl">
+
+<div ng-if="!globals.currentUser">
+  <div class="no-menu">
+    <a ng-href="/" tabindex="-1" title="Pokela" href="/"><img class="pokela-logo" src="img/pokela-logo.png"></a>
+  </div>
+</div>
+
+  <nav id="menu" ng-if="globals.currentUser" class="navbar navbar-default navbar-fixed-top" style="margin-bottom: 5px">
+      <div class="container-fluid">
+          <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+              <a class="navbar-brand" href="/">POKELA</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                  <li><a href="/">Catálogo</a></li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                  <li>
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="https://secure.gravatar.com/avatar/283788bda4db8e5ad2e784aeed596b66?d=mm&s=24" alt="" class="">&nbsp;{{globals.currentUser.username}}&nbsp;<span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                          <li><a href="/cuenta">Cuenta</a></li>
+                          <li><a href="/biblioteca">Biblioteca</a></li>
+                          <li role="separator" class="divider"></li>
+                          <li><a href="/login">Cerrar Sesión</a></li>
+                      </ul>
+                  </li>
+              </ul>
+          </div>
+      </div>
+  </nav>
+
+  <div class="view-container" ng-view></div>
+  
+  <!-- Libraries Scripts -->
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="node_modules/angular/angular.min.js"></script>
+  <script src="node_modules/angular-route/angular-route.min.js"></script>
+  <script src="node_modules/angular-animate/angular-animate.min.js"></script>
+  <script src="node_modules/angular-aria/angular-aria.min.js"></script>
+  <script src="node_modules/angular-messages/angular-messages.min.js"></script>
+  <script src="node_modules/angular-cookies/angular-cookies.min.js"></script>
+  <script src="node_modules/angular-material/angular-material.min.js"></script>
+  <script src="node_modules/angular-translate/dist/angular-translate.min.js"></script>
+  <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="node_modules/moment/moment.js"></script>
+  <script src="node_modules/tinymce/tinymce.min.js"></script>
+  <script src="node_modules/angular-ui-tinymce/src/tinymce.js"></script>
+  <script src="scripts/linq/linq.js"></script>
+
+  <!-- App Scripts -->
+  <script src="app/models/model.js"></script>
+  <script src="app/modules/app.js"></script>
+  <script src="app/services/securityService.js"></script>
+  <script src="app/services/amService.js"></script>
+  <script src="app/controllers/loginCtrl.js"></script>
+  <script src="app/controllers/registroCtrl.js"></script>
+  <script src="app/controllers/homeCtrl.js"></script>
+  <script src="app/controllers/catalogoCtrl.js"></script>
+  <script src="app/controllers/bibliotecaCtrl.js"></script>
+  <script src="app/controllers/cuentaCtrl.js"></script>
+  <script src="app/controllers/lecturaCtrl.js"></script>
+  <script src="app/controllers/escrituraCtrl.js"></script>
+  <script src="app/controllers/gestionLibroCtrl.js"></script>
+  <script src="app/controllers/testCtrl.js"></script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<md-dialog>
+
+  <md-dialog-content>
+    <div class="md-dialog-content">
+
+      <div class="row">
+        
+          <div class="col-md-3"> 
+            <md-content>
+              <div class="row">
+                <img class="portada-detalle" src="{{ libro.portada }}" />
+              </div>
+              <div class="row">
+                <md-button class="md-raised" ng-click="leerLibro(libro._id)">Leer</md-button>
+                <md-button class="md-raised" ng-click="editarLibro(libro._id)">Editar</md-button>
+                <md-button class="md-raised" ng-click="escribirLibro(libro._id)">Escribir</md-button>
+              </div>
+            </md-content>
+          </div>
+        
+
+          <div class="col-md-9">
+            <md-tabs md-dynamic-height md-border-bottom md-align-tabs="top">
+
+              <md-tab label="Descripción">
+                <md-content>
+                  <h2>Título: {{libro.titulo}}</h2>
+                  <h3>Autor: {{libro.autor}}</h3>
+                  <h3>Descripcción:</h3>
+                  <p>{{libro.descripcion}}</p>
+                </md-content>
+              </md-tab>
+
+              <md-tab label="Capítulos">
+                <md-content>
+                  <h2>Título: {{libro.titulo}}</h2>
+                  <h3>Autor: {{libro.autor}}</h3>
+                  <h3>Descripcción:</h3>
+                  <p>{{libro.descripcion}}</p>
+                </md-content>
+              </md-tab>
+
+              <md-tab label="Relacionados">
+                <md-content>
+                  <h2>Título: {{libro.titulo}}</h2>
+                  <h3>Autor: {{libro.autor}}</h3>
+                  <h3>Descripcción:</h3>
+                  <p>{{libro.descripcion}}</p>
+                </md-content>
+              </md-tab>
+
+              <md-tab label="Opiniones">
+                <md-content>
+                  <h2>Título: {{libro.titulo}}</h2>
+                  <h3>Autor: {{libro.autor}}</h3>
+                  <h3>Descripcción:</h3>
+                  <p>{{libro.descripcion}}</p>
+                </md-content>
+              </md-tab>
+
+            </md-tabs>
+          </div>
+
+      </div>
+
+    </div>
+  </md-dialog-content> 
+
+</md-dialog>

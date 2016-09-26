@@ -1,0 +1,104 @@
+<div class="contenido">
+    <form name="registerForm" class="register-box">
+
+        <div layout="row">
+            <md-input-container flex="50">
+                <label>Usuario</label>
+                <input required name="usuario" ng-model="registro.usuario">
+                <div ng-messages="registerForm.usuario.$error">
+                <div ng-message="required">El usuario es requerido.</div>
+            </div>
+            </md-input-container>
+            <md-input-container flex="50">
+                <label>Password</label>
+                <input required name="password" ng-model="registro.password">
+                <div ng-messages="registerForm.password.$error">
+                    <div ng-message="required">El password es requerido.</div>
+                </div>
+            </md-input-container>
+        </div>
+        <div layout="row">
+            <md-input-container flex="50">
+                <label>Correo Electrónico</label>
+                <input required name="email" ng-model="registro.email">
+                <div ng-messages="registerForm.email.$error">
+                <div ng-message="required">El correo electrónico.</div>
+            </div>
+            </md-input-container>
+            <md-input-container flex="50">
+                <label>Confirma el correo electrónico</label>
+                <input required name="reemail" ng-model="reemail">
+                <div ng-messages="registerForm.reemail.$error">
+                    <div ng-message="required">La confirmación del correo electrónico es requerida.</div>
+                </div>
+            </md-input-container>
+        </div>
+
+        <div layout="row">
+            <md-input-container flex="25">
+                <label>Día</label>
+                <input name="dia" ng-model="fecha.dia">
+                <div ng-messages="registerForm.dia.$error">
+                <div ng-message="required">El día es requerido.</div>
+            </div>
+            </md-input-container>
+            <md-input-container flex="50">
+                <label>Mes</label>
+                <md-select name="mes" ng-model="fecha.mes">
+                    <md-option value="1">Enero</md-option>
+                    <md-option value="2">Febrero</md-option>
+                    <md-option value="3">Marzo</md-option>
+                    <md-option value="4">Abril</md-option>
+                    <md-option value="5">Mayo</md-option>
+                    <md-option value="6">Junio</md-option>
+                    <md-option value="7">Julio</md-option>
+                    <md-option value="8">Agosto</md-option>
+                    <md-option value="9">Septiembre</md-option>
+                    <md-option value="10">Octubre</md-option>
+                    <md-option value="11">Noviembre</md-option>
+                    <md-option value="12">Diciembre</md-option>
+                </md-select>
+                <div ng-messages="registerForm.mes.$error">
+                    <div ng-message="required">El mes es requerido.</div>
+                </div>
+            </md-input-container>
+            <md-input-container flex="25">
+                <label>Año</label>
+                <input name="anyo" ng-model="fecha.anyo">
+                <div ng-messages="registerForm.anyo.$error">
+                    <div ng-message="required">El año es requerido.</div>
+                </div>
+            </md-input-container>
+        </div>
+
+        <div layout="row">
+            <md-radio-group ng-model="registro.sexo" layout="row">
+                <md-radio-button value="m" class="md-primary">Masculino</md-radio-button>
+                <md-radio-button value="w">Femenino</md-radio-button>
+            </md-radio-group>
+        </div>
+
+        <br />
+
+        <div layout="row">
+            <md-checkbox ng-model="condiciones" class="md-align-top-left md-primary" flex>
+                Compartir mis datos de registro con los proveedores de contenidos de Pokela para fines de marketing. Ten en cuenta que tus datos pueden ser transferidos a un país fuera del España, tal y como se describe en nuestra política de privacidad.
+                <br/>
+            </md-checkbox>
+        </div>
+
+        <div layout="row">
+            <p class="text-center">Al hacer click en Regístrate, aceptas los <a href="#">términos y condiciones</a> y la <a href="#">política de privacidad</a> de Pokela</p>
+        </div>
+        <section layout="row" layout-align="center center" layout-wrap>
+            <md-button class="md-raised md-primary" ng-click="registrarse()">REGISTRARSE</md-button>
+        </section>
+        
+    </form>
+    
+    <section layout="row" layout-align="center center" layout-wrap>
+        <p>Ya tienes cuenta?&nbsp<a href="/login">Entra</a></p>
+    </section>
+
+    </form>
+</div>

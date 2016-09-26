@@ -1,0 +1,125 @@
+<script>
+    $(document).ready(function(){
+        $(".changeCollapsible").click(function () {
+            $changeCollapsible = $(this);
+            //Obtenemos el contenedor
+            $content = $changeCollapsible.parents(".containerCollapsible").children(".content-collapse");
+            //Mostramos el contenido
+            $content.slideToggle(500, function () {
+                $changeCollapsible.html(function () {
+                    //Cambiamos el contenido de la cabecera dependiendo de si se muestra el contenido
+                    return $content.is(":visible") ? "<i class='fa fa-chevron-up fa-2x'></i>" : "<i class='fa fa-chevron-down fa-2x'></i>";
+                });
+            });
+        });
+
+        $(".changeCollapsibleSubChapter").click(function () {
+            $changeCollapsibleSubChapter = $(this);
+            //Obtenemos el contenedor
+            $contentSubChapter = $changeCollapsibleSubChapter.parents(".containerCollapsibleSubChapter").children(".content-collapse-SubChapter");
+            //Mostramos el contenido
+            $contentSubChapter.slideToggle(500, function () {
+                $changeCollapsibleSubChapter.html(function () {
+                    //Cambiamos el contenido de la cabecera dependiendo de si se muestra el contenido
+                    return $contentSubChapter.is(":visible") ? "<i class='fa fa-caret-up fa-2x'></i>" : "<i class='fa fa-caret-down fa-2x'></i>";
+                });
+            });
+        });
+    })
+    
+</script>
+<div class="header">
+    <div class="row">
+        <div class="col-md-10">
+            <h1 ng-if="libro">{{ libro.titulo }}</h1>
+        </div>
+        <div class="col-md-2 text-right">
+            <md-fab-speed-dial md-open="false" md-direction="{{fabSpeed.selectedDirection}}" ng-class="fabSpeed.selectedMode">
+                <md-fab-trigger>
+                <md-button aria-label="menu" class="md-fab md-warn" style="padding: 2px 3px 3px 3px;">
+                    <i class="fa fa-bars" style="font-size:18px" aria-hidden="true"></i>
+                </md-button>
+                </md-fab-trigger>
+
+                <md-fab-actions>
+                <md-button aria-label="Capitulos" class="md-fab md-raised md-mini" style="padding: 3px 2px 0px 0px;" ng-click="toggleRight()">
+                    <i class="fa fa-code-fork fa-rotate-180" style="font-size:22px" aria-hidden="true"></i>
+                </md-button>
+                <md-button aria-label="Herramientas" class="md-fab md-raised md-mini" style="padding: 2px 2px 3px 3px;" ng-click="toggleLeft()">
+                    <i class="fa fa-cog" style="font-size:18px" aria-hidden="true"></i>
+                </md-button>
+                </md-fab-actions>
+            </md-fab-speed-dial>
+        </div>
+    </div>
+</div>
+<div class="" style="height: 85%;">
+    <section layout="row" flex>
+        <md-sidenav class="md-sidenav-left" md-component-id="left" md-disable-backdrop md-whiteframe="4" style="margin-top: 50px;">
+            <md-toolbar>
+                <div class="md-toolbar-tools">
+                    <h2>Herramientas</h2>
+                    <span flex></span>
+                    <md-button class="md-icon-button" ng-click="toggleLeft()">
+                        <i class="fa fa-times" style="font-size:18px" aria-hidden="true"></i>
+                    </md-button>
+                </div>
+            </md-toolbar>
+            <md-content layout-margin>
+                <p>This sidenav is not showing any backdrop, where users can click on it, to close the sidenav.</p>
+            </md-content>
+        </md-sidenav>
+    </section>
+    <section layout="row" flex>
+        <md-sidenav class="md-sidenav-right" md-component-id="right" md-disable-backdrop md-whiteframe="4" style="margin-top: 50px; width: 50%; overflow-y: hidden;">
+            <md-toolbar>
+                <div class="md-toolbar-tools">
+                    <md-button class="md-icon-button" ng-click="toggleRight()">
+                        <i class="fa fa-times" style="font-size:18px" aria-hidden="true"></i>
+                    </md-button>
+                    <span flex></span>
+                    <h2>Capítulos</h2>
+                </div>
+            </md-toolbar>
+            <md-content style="height: 99%; overflow-y: scroll;  overflow-x: hidden;" layout-margin>
+                <div class="row">
+                    <div class="col-md-12" ng-repeat="capitulo in libro.capitulos">
+                        <md-card md-theme-watch style="padding: 15px">
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <div class="md-subhead">{{ capitulo.titulo }}</div>
+                                </div>
+                                <div class="col-md-5 text-center">
+                                    <md-button ng-click="editarCapitulo($event, capitulo)"  class="md-raised md-primary btn-xs-pl" >Leer</md-button>
+                                    <md-button ng-show="libro._id != ''" ng-click="escribir(capitulo._id)" class="md-raised btn-xs-pl"><i class="fa fa-plus" aria-hidden="true"></i></md-button>
+                                </div>
+                                <div class="col-md-12 containerCollapsible">
+                                    <div class='content-collapse'>
+                                        <div class="">{{ capitulo.subtitulo }}</div>
+                                        <div class='containerCollapsibleSubChapter' ng-repeat="subcapitulo in capitulo.capitulos">
+                                            <div class='row'>
+                                                <div class='col-md-10'>
+                                                    <p class='tab-title'>{{ subcapitulo.titulo }}</p>
+                                                </div>
+                                                <div class='col-md-2 text-right'>
+                                                    <span class='changeCollapsibleSubChapter'><i class='fa fa-caret-down fa-2x'></i></span>
+                                                </div>
+                                            </div>
+                                            <div class='content-collapse-SubChapter'>
+                                                {{ subcapitulo.descripcion }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 text-center">
+                                        <span class='changeCollapsible'><i class='fa fa-chevron-down fa-2x'></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </md-card>
+                    </div>
+                </div>
+            </md-content>
+        </md-sidenav>
+    </section>
+    <div id="id-container-pages" class="col-base container-pages" style="width: 100%"></div>
+</div>

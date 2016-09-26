@@ -1,0 +1,3 @@
+{"_id":{"$oid":"57cae0519812c4800900000d"},"nombre":"","apellidos":"","alias":"","usuario":"admin","password":"admin","email":"","fechaNacimiento":null,"sexo":"","__v":0}
+{"_id":{"$oid":"57cae0629812c4800900000e"},"nombre":"","apellidos":"","alias":"","usuario":"areyes","password":"areyes","email":"","fechaNacimiento":null,"sexo":"","__v":0}
+{"_id":{"$oid":"57cae147bd5fcef909000006"},"nombre":"","apellidos":"","alias":"","usuario":"omorant","password":"omorant","email":"","fechaNacimiento":null,"sexo":"","__v":0}

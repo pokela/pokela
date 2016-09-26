@@ -1,0 +1,25 @@
+<div class="contenido">
+  <div class="login-box">
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>Usuario</label>
+        <input ng-model="username">
+      </md-input-container>
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>Contraseña</label>
+        <input ng-model="password">
+      </md-input-container>
+
+      <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+        <md-button class="md-raised md-primary" ng-click="login()">Login</md-button>
+      </section>
+
+    </form>
+    
+    <section layout="row" layout-align="center center" layout-wrap>
+      <p><a href="/">¿Se te ha olvidado el nombre de usuario o la contraseña?</a></p>
+      <p>¿No tienes cuenta?&nbsp<a href="/registro">Regístrate</a></p>
+    </section>
+
+  </div>
+</div>
+
